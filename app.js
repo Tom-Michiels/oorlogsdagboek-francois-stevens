@@ -160,7 +160,12 @@
 
 // ---------- kaart ----------
 (function buildMap() {
-  const map = L.map('map', { scrollWheelZoom: false });
+  // ruime render-marge: zo blijven de routelijnen ook ver buiten beeld
+  // getekend en verschijnt de oude route niet "opnieuw" na het panverschuiven
+  const map = L.map('map', {
+    scrollWheelZoom: false,
+    renderer: L.svg({ padding: 4 })
+  });
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap',
     maxZoom: 17
@@ -237,8 +242,14 @@
     retreatLine.setLatLngs([]);
     returnLine.setLatLngs([]);
 
-    walker = L.circleMarker([allPoints[0].p.lat, allPoints[0].p.lng], {
-      radius: 8, color: '#1b1815', fillColor: '#d9a521', fillOpacity: 1, weight: 2
+    // DOM-marker i.p.v. circleMarker: blijft constant van grootte tijdens het zoomen
+    walker = L.marker([allPoints[0].p.lat, allPoints[0].p.lng], {
+      icon: L.divIcon({
+        className: '',
+        html: '<div class="walker-dot"></div>',
+        iconSize: [16, 16], iconAnchor: [8, 8]
+      }),
+      zIndexOffset: 1000, interactive: false
     }).addTo(map);
 
     // eerst inzoomen op het vertrekpunt, dan pas vertrekken
