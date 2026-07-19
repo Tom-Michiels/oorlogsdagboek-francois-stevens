@@ -182,16 +182,23 @@ body {
   display: grid; grid-template-columns: minmax(280px, 460px) 1fr;
   gap: 56px; align-items: center;
 }
-.intro-photo { position: relative; }
+.intro-photo {
+  position: relative;
+  /* de 'rotate'-property staat los van 'transform', dus de reveal-animatie
+     (translateY) blijft gewoon werken terwijl de hele polaroid — mét
+     onderschrift — schuin hangt */
+  rotate: -2deg;
+  transition: rotate .5s ease;
+}
+.intro-photo:hover { rotate: 0deg; }
 .intro-photo img {
   width: 100%; display: block;
   border: 12px solid #fff; border-bottom-width: 44px;
   box-shadow: 0 14px 40px rgba(42,35,32,.4);
-  transform: rotate(-2deg);
   filter: sepia(.15);
   transition: transform .5s ease;
 }
-.intro-photo:hover img { transform: rotate(0deg) scale(1.02); }
+.intro-photo:hover img { transform: scale(1.02); }
 .intro-photo figcaption {
   position: absolute; bottom: 8px; left: 0; right: 0; text-align: center;
   font-family: var(--font-head); font-size: .8rem; color: var(--ink-soft);
