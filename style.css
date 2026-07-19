@@ -201,8 +201,21 @@ figure.intro-photo {
   box-shadow: 0 14px 40px rgba(42,35,32,.4);
   filter: sepia(.15);
   transition: transform .5s ease;
+  cursor: pointer;
 }
 .intro-photo:hover img { transform: scale(1.02); }
+
+/* gouden albumhoekjes, zoals in het dagboek zelf */
+.pc {
+  position: absolute; width: 54px; height: 54px; z-index: 2;
+  background: linear-gradient(135deg, #f0d98a, #c99a38 55%, #a87f28);
+  filter: drop-shadow(0 2px 3px rgba(42,35,32,.35));
+  pointer-events: none;
+}
+.pc-tl { top: -7px; left: -7px;   clip-path: polygon(0 0, 100% 0, 0 100%); }
+.pc-tr { top: -7px; right: -7px;  clip-path: polygon(0 0, 100% 0, 100% 100%); }
+.pc-bl { bottom: -7px; left: -7px;  clip-path: polygon(0 0, 0 100%, 100% 100%); }
+.pc-br { bottom: -7px; right: -7px; clip-path: polygon(100% 0, 100% 100%, 0 100%); }
 .intro-photo figcaption {
   position: absolute; bottom: 8px; left: 0; right: 0; text-align: center;
   font-family: var(--font-head); font-size: .8rem; color: var(--ink-soft);
