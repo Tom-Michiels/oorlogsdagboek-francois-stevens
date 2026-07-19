@@ -429,6 +429,44 @@ figure.intro-photo {
   float: left; padding-right: 7px; color: var(--accent-red);
 }
 
+/* ---------- historische duiding: archieffiche onder de dagtekst ---------- */
+.hist-note {
+  margin-top: 24px;
+  background:
+    repeating-linear-gradient(0deg, rgba(120,100,70,.04) 0 1px, transparent 1px 20px),
+    #e6d9ba;
+  border: 1px solid #c9b890;
+  border-left: 4px solid var(--accent-yellow);
+  padding: 16px 20px 12px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 2px 8px rgba(42,35,32,.12);
+  position: relative;
+}
+/* perforatie-look linksboven, als een gearchiveerde fiche */
+.hist-note::after {
+  content: ""; position: absolute; top: 10px; right: 12px;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--paper); border: 1px solid #c9b890;
+  box-shadow: inset 0 1px 2px rgba(42,35,32,.25);
+}
+.hist-head {
+  font-family: var(--font-ui); font-weight: 500;
+  text-transform: uppercase; letter-spacing: .24em; font-size: .68rem;
+  color: var(--khaki); margin-bottom: 8px;
+  display: flex; align-items: center; gap: 8px;
+}
+.hist-flag {
+  display: inline-block; width: 18px; height: 11px; flex-shrink: 0;
+  background: linear-gradient(to right, #2a2320 33.3%, var(--accent-yellow) 33.3% 66.6%, var(--accent-red) 66.6%);
+  box-shadow: 0 1px 2px rgba(42,35,32,.3);
+}
+.hist-body {
+  font-size: .98rem; line-height: 1.6; color: var(--ink-soft);
+}
+.hist-bron {
+  margin-top: 8px; font-style: italic; font-size: .78rem;
+  color: var(--khaki); text-align: right;
+}
+
 /* ---------- zwevende dag-indicator ---------- */
 .day-chip {
   position: fixed; left: 26px; bottom: 26px; z-index: 950;

@@ -428,3 +428,95 @@ const ROUTE_RETURN = [
   { name: "Lummen",             lat: 50.9860, lng: 5.1900, day: 21 },
   { name: "Kuringen (thuis)",   lat: 50.9450, lng: 5.2930, day: 21, note: "Einddoel bereikt om 19 uur — 210 km in 3 dagen" }
 ];
+
+// ==========================================================
+// Historische duiding per dag — gebaseerd op bronnenonderzoek
+// (o.a. 18daagseveldtocht.be, regimentsgeschiedenis 1A)
+// ==========================================================
+
+const HIST = {
+  1: {
+    text: "De 7e Batterij behoorde tot de IIIe Groep van het 1e Regiment Artillerie (1A), de divisieartillerie van de 1ste Infanteriedivisie. De regimentsgeschiedenis bevestigt de stelling ten westen van Diepenbeek. De “zware spoorwegartillerie” die François hoorde, was de 9e batterij van II/5LA: één 280mm Krupp-spoorwegkanon.",
+    bron: "18daagseveldtocht.be"
+  },
+  2: {
+    text: "De marge over Vroenhoven klopt historisch: de officieren die de brug moesten laten springen — kapitein-commandant Van Beneden en luitenant Giddelo — sneuvelden in de eerste minuten van de Duitse zweefvliegtuigaanval (Sturmabteilung Koch, dezelfde operatie die fort Eben-Emael uitschakelde). Sergeant Crauwels stak de lont nog aan, maar de leidingen waren doorgesneden. Zo viel de brug onbeschadigd in Duitse handen en klopte de gevreesde omsingeling.",
+    bron: "o.a. vroenhoven.be, regimentsgeschiedenissen"
+  },
+  3: {
+    text: "De Getelinie (Budingen–Drieslinter–Tienen) was een dekkingsstelling die de terugtocht van het veldleger naar de hoofdverdedigingslinie moest afschermen. De “valsche geruchten” en verwarde bevelen die François beschrijft, zijn typerend voor de chaotische eerste oorlogsdagen die in vrijwel alle eenheidsverslagen terugkeren.",
+    bron: "18daagseveldtocht.be"
+  },
+  4: {
+    text: "De “250 parachutisten in een bosch” waren vrijwel zeker parachutistenpsychose: de Duitsers dropten naast echte para’s ook poppen (“Lehmänner”) om paniek te zaaien, en overal in België werden die dagen valschermspringers “gezien”. De gevechten aan de Gete en de bombardementen op Leuven, Tienen, Sint-Truiden en Hasselt zijn wél gedocumenteerd.",
+    bron: "literatuur meidagen 1940"
+  },
+  5: {
+    text: "De marge “Lijn Koningshooikt–Wavre” verwijst naar de K.W.-stelling, de hoofdverdedigingslinie tussen Antwerpen en Namen waar het leger zich achter terugtrok. De doortocht van de IIIe Groep via Kampenhout op 13–14 mei wordt bevestigd door de regimentsgeschiedenis.",
+    bron: "18daagseveldtocht.be"
+  },
+  6: {
+    text: "Nederland capituleerde op 14 mei, na het bombardement op Rotterdam; het nieuws bereikte de Belgische troepen op 15 mei — exact zoals het dagboek noteert. Diezelfde dagen brak het Duitse leger bij Sedan door het Franse front: daarom werd ook de K.W.-lijn al na enkele dagen opgegeven en trok het hele Belgische leger westwaarts.",
+    bron: "algemene historiografie"
+  },
+  7: {
+    text: "Het doodvonnis voor soldaat Beckers werd vrijwel zeker nooit voltrokken: er is geen enkele Belgische executie wegens desertie in mei 1940 gedocumenteerd. Doodvonnissen werden omgezet, en de krijgsraden te velde werden op 14 juli 1940 afgeschaft. De dossiers berusten vandaag in het Algemeen Rijksarchief.",
+    bron: "onderzoek Belgische militaire justitie 1940"
+  },
+  8: {
+    text: "“Sauvegare” is het gehucht Sauvegarde bij Ruisbroek (Puurs). De regimentsgeschiedenis bevestigt dat de IIIe Groep daar op 17–18 mei de oprukkende Duitse 56e Infanteriedivisie beschoot aan het Kanaal van Willebroek en de wegen rond Walem — precies de beschieting die François beschrijft.",
+    bron: "18daagseveldtocht.be"
+  },
+  9: {
+    text: "De Scheldebrug van Temse werd op 18 mei rond 19 uur opgeblazen, kort na de doortocht van de laatste colonnes — zoals het dagboek zegt. Het urenlange aanschuiven kwam doordat een volledige infanteriedivisie met al haar voertuigen en paarden over één brug moest.",
+    bron: "18daagseveldtocht.be, lokale geschiedschrijving Temse"
+  },
+  10: {
+    text: "Rond Gent lag het versterkte “Bruggenhoofd Gent”. Het regiment stond te Drongen met de commandopost in café De Lelie. Brussel was op 17 mei gevallen, Antwerpen op 18 mei — de opsomming in het dagboek klopt.",
+    bron: "18daagseveldtocht.be"
+  },
+  11: {
+    text: "Op 20 mei bereikten Duitse tanks Abbeville aan de Somme-monding: het Belgische leger was samen met de Britten en Fransen in het noorden volledig afgesneden. Kolonel Albert Delhaise — het dagboek spelt “Delhaize” — voerde bevestigd het bevel over 1A én over de artillerie van de 1ste Infanteriedivisie.",
+    bron: "18daagseveldtocht.be"
+  },
+  12: {
+    text: "Strenge orders tegen wijken zonder bevel bestonden effectief na de chaotische terugtochten; de exacte tekst van deze nota is niet teruggevonden. De “opgeëischte jonge mannen” waren CRAB’s: zo’n 300.000 zestien- tot vijfendertigjarigen die naar Frankrijk moesten; wie na de Duitse doorbraak van 20 mei de grens niet meer over raakte, keerde terug.",
+    bron: "literatuur CRAB’s"
+  },
+  13: {
+    text: "Het leger trok terug achter de Leie en het Afleidingskanaal — de laatste verdedigingslinie op Belgische bodem. De bijna 1.000 achtergelaten obussen tekenen de haast van die terugtocht.",
+    bron: "18daagseveldtocht.be"
+  },
+  14: {
+    text: "Op 23 mei begon de Slag om de Leie, de bloedigste fase van de Achttiendaagse Veldtocht, met het zwaartepunt bij Kortrijk — precies de sector waar de 7e Batterij te Heule in stelling lag.",
+    bron: "algemene historiografie Leieslag"
+  },
+  15: {
+    text: "De Duitsers forceerden op 23–24 mei de Leie bij Kortrijk. De Britse troepen trokken zich terug richting Duinkerke (de evacuatie-operatie “Dynamo” begon op 26 mei). Het gevoel “in den steek gelaten” leefde breed in het Belgische leger en woog later zwaar door in de controverse rond de capitulatie.",
+    bron: "algemene historiografie"
+  },
+  16: {
+    text: "De verplaatsing naar Beitem op 25 mei wordt bevestigd door de regimentsgeschiedenis. Batterijcommandant graaf Philippe de Liedekerke is vermoedelijk dezelfde Philippe de Liedekerke (1915–1997) die later als geheim agent “Claudius” driemaal boven bezet België werd geparachuteerd en na de oorlog ambassadeur werd.",
+    bron: "18daagseveldtocht.be; biografisch onderzoek"
+  },
+  17: {
+    text: "De 318 schoten zijn geloofwaardig: de Ie Groep van hetzelfde regiment vuurde die dag zo’n 1.100 schoten af. Het Duitse antwoord kwam van 105mm-batterijen. Roeselare werd die dagen zwaar gebombardeerd — de verwoeste kerk en het gemeentehuis zijn gedocumenteerd.",
+    bron: "18daagseveldtocht.be"
+  },
+  18: {
+    text: "Duitse strooibiljetten met exact deze boodschap — de Fransen en Britten laten u in de steek, geef u over — werden eind mei massaal boven het Belgische front gedropt. De koninklijke nota die de commandant voorlas was de dagorder van 25 mei; het dagboek mengt er zinnen uit de proclamatie van 10 mei doorheen. Diezelfde avond om 17 uur stak generaal-majoor Derousseaux de linies over om een wapenstilstand te vragen.",
+    bron: "historiografie capitulatie"
+  },
+  19: {
+    text: "Het staakt-het-vuren ging in om 4 uur Belgische tijd (5 uur Duitse tijd); de onvoorwaardelijke capitulatie werd om 10u30 in het kasteel van Anvaing ondertekend — vandaar “het Belgisch leger heeft opgehouden te bestaan”. De regimentsgeschiedenis vermeldt dat de artilleristen bij de overgave hun richtkijkers vernielden, zoals ook het dagboek beschrijft. De Franse premier Reynaud reageerde woedend op koning Leopold III — de kiem van de latere Koningskwestie.",
+    bron: "18daagseveldtocht.be; algemene historiografie"
+  },
+  20: {
+    text: "François was niet alleen: naar schatting 150.000 à 175.000 Belgische soldaten liepen eind mei en juni 1940 gewoon naar huis of ontsnapten onderweg uit de colonnes. De Duitsers lieten Vlaamse krijgsgevangenen in de zomer van 1940 grotendeels vrij (de “Flamenpolitik”); zo’n 70.900 vooral Waalse soldaten bleven vijf jaar in Duitse kampen — een cijfer dat achteraan in het dagboek opvallend correct genoteerd staat.",
+    bron: "historiografie krijgsgevangenen 1940"
+  },
+  21: {
+    text: "De cijferbalans achteraan het dagboek is verrassend accuraat: 225.000 krijgsgevangenen klopt exact, en de 5.882 gesneuvelden zitten dicht bij de huidige consensus van ±6.500–7.000 gesneuvelde Belgische militairen. Dat de deuren thuis gesloten bleven, was tekenend: honderdduizenden Belgen — schattingen lopen op tot twee miljoen — waren eind mei zelf op de vlucht.",
+    bron: "historiografie Achttiendaagse Veldtocht"
+  }
+};

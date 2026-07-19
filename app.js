@@ -47,6 +47,11 @@
         <h3 class="entry-title">${d.title}</h3>
         <p class="entry-place">${d.place}</p>
         <div class="entry-text">${d.text.split(/\n\n+/).map(p => `<p>${p}</p>`).join('')}</div>
+        ${HIST[d.day] ? `<aside class="hist-note">
+          <p class="hist-head"><span class="hist-flag"></span>Historische duiding</p>
+          <p class="hist-body">${HIST[d.day].text}</p>
+          <p class="hist-bron">Bron: ${HIST[d.day].bron}</p>
+        </aside>` : ''}
       </div>
       <div class="entry-feature${d.photos.length > 2 ? ' many' : ''}">
         ${d.photos.map((n, i) => {
