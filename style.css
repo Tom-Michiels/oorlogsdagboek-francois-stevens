@@ -396,36 +396,33 @@ figure.intro-photo {
 
 .feat {
   position: relative; margin: 0;
-  width: 100%; max-width: 480px;
+  /* uniforme maat voor álle polaroids, ongeacht het aantal per dag */
+  width: calc(50% - 10px); max-width: 320px; min-width: 220px;
   rotate: var(--rot, 2deg);
   transition: transform .18s ease-out, rotate .5s ease;
   will-change: transform;
 }
 .feat:hover { rotate: 0deg; z-index: 3; }
-/* bij meerdere foto's: kleinere polaroids in twee kolommen */
-.entry-feature.many .feat { width: calc(50% - 12px); max-width: 300px; }
 .feat::before {
   content: ""; position: absolute; top: -12px; left: 50%;
   transform: translateX(-50%) rotate(-2.5deg);
-  width: 96px; height: 24px;
+  width: 90px; height: 22px;
   background: rgba(214,196,155,.72);
   box-shadow: 0 1px 4px rgba(42,35,32,.22);
   z-index: 2;
 }
 .feat img {
   width: 100%; display: block;
-  border: 10px solid #fff; border-bottom-width: 46px;
+  border: 8px solid #fff; border-bottom-width: 38px;
   box-shadow: 0 14px 36px rgba(42,35,32,.34);
   filter: sepia(.25); cursor: pointer;
   transition: filter .4s;
 }
-.entry-feature.many .feat img { border-width: 7px; border-bottom-width: 34px; }
 .feat:hover img { filter: sepia(0); }
 .feat figcaption {
-  position: absolute; bottom: 12px; left: 0; right: 0; text-align: center;
-  font-family: var(--font-head); font-size: .85rem; color: var(--ink-soft);
+  position: absolute; bottom: 9px; left: 0; right: 0; text-align: center;
+  font-family: var(--font-head); font-size: .72rem; color: var(--ink-soft);
 }
-.entry-feature.many .feat figcaption { bottom: 8px; font-size: .68rem; }
 .entry-card::before {
   content: ""; position: absolute; top: -8px; left: 50%; transform: translateX(-50%) rotate(-1.5deg);
   width: 110px; height: 22px;
