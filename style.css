@@ -188,7 +188,11 @@ body {
      (translateY) blijft gewoon werken terwijl de hele polaroid — mét
      onderschrift — schuin hangt */
   rotate: -2deg;
-  transition: rotate .5s ease;
+}
+/* hogere specificiteit dan de .reveal-regel verderop, anders verliest
+   'rotate' zijn overgang en springt het kader (mét tekst) abrupt */
+figure.intro-photo {
+  transition: opacity .9s ease, transform .9s ease, rotate .5s ease;
 }
 .intro-photo:hover { rotate: 0deg; }
 .intro-photo img {
