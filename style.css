@@ -281,8 +281,7 @@ figure.intro-photo {
 #map {
   height: 560px; border: 10px solid #fff;
   box-shadow: 0 16px 44px rgba(42,35,32,.4);
-  /* Lichte tint: de NGI-kaart 1939 is al historisch van toon */
-  filter: sepia(.12) saturate(.92) contrast(1.02);
+  filter: sepia(.28) saturate(.85);
   z-index: 1;
 }
 #map .leaflet-control-layers {
