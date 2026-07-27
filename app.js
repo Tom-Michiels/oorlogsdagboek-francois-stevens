@@ -2,10 +2,18 @@
 // Oorlogsdagboek François Stevens — interactie
 // ==========================================================
 
+I18N.init();
+
+const LANG = I18N.current;
+const DIARY_L = getLocalizedDiary(LANG);
+const HIST_L = getLocalizedHist(LANG);
+const ROUTE_RETREAT_L = localizeRoute(ROUTE_RETREAT, LANG, 'retreat');
+const ROUTE_RETURN_L = localizeRoute(ROUTE_RETURN, LANG, 'return');
+
 // ---------- typemachine in de hero ----------
 (function typewriter() {
   const el = document.getElementById('typewriter');
-  const text = "Oorlogsdagboek van\nFrançois Stevens";
+  const text = I18N.t('typewriter');
   let i = 0;
   function tick() {
     if (i <= text.length) {
@@ -20,17 +28,23 @@
 // ---------- tijdlijn opbouwen ----------
 (function buildTimeline() {
   const wrap = document.getElementById('timeline');
+  const dayBadge = I18N.t('dayBadge');
+  const histHead = I18N.t('histHead');
+  const histSource = I18N.t('histSource');
+  const pageAlt = I18N.t('pageAlt');
+  const pageCaption = I18N.t('pageCaption');
+  const pageFig = I18N.t('pageFig');
 
-  // voortgangslijn die meegroeit met het scrollen
   const fill = document.createElement('div');
   fill.className = 'tl-fill';
   wrap.appendChild(fill);
 
-  DIARY.forEach((d, idx) => {
+  DIARY_L.forEach((d, idx) => {
     const side = idx % 2 === 0 ? 'left' : 'right';
     const special = d.day >= 19;
-    const badgeLbl = d.dayLabel ? d.dayLabel : 'dag';
+    const badgeLbl = d.dayLabel ? d.dayLabel : dayBadge;
     const badgeNum = d.dayLabel ? '✦' : d.day;
+    const hist = HIST_L[d.day];
 
     const entry = document.createElement('article');
     entry.className = `entry ${side}`;
@@ -47,10 +61,10 @@
         <h3 class="entry-title">${d.title}</h3>
         <p class="entry-place">${d.place}</p>
         <div class="entry-text">${d.text.split(/\n\n+/).map(p => `<p>${p}</p>`).join('')}</div>
-        ${HIST[d.day] ? `<aside class="hist-note">
-          <p class="hist-head"><span class="hist-flag"></span>Historische duiding</p>
-          <p class="hist-body">${HIST[d.day].text}</p>
-          <p class="hist-bron">Bron: ${HIST[d.day].bron}</p>
+        ${hist ? `<aside class="hist-note">
+          <p class="hist-head"><span class="hist-flag"></span>${histHead}</p>
+          <p class="hist-body">${hist.text}</p>
+          <p class="hist-bron">${histSource}: ${hist.bron}</p>
         </aside>` : ''}
       </div>
       <div class="entry-feature${d.photos.length > 2 ? ' many' : ''}">
@@ -58,16 +72,15 @@
           const rot = ((i % 2 === 0 ? -1 : 1) * (1.2 + (i % 3) * 0.9)).toFixed(1);
           return `<figure class="feat" style="--rot:${rot}deg">
             <img src="img/stevens-${n}.jpg" loading="lazy"
-                 alt="Dagboekpagina, foto ${n}" data-photo="${n}"
-                 data-caption="${d.date} — dagboekpagina ${n}">
-            <figcaption>Dagboekpagina ${n}</figcaption>
+                 alt="${pageAlt}${n}" data-photo="${n}"
+                 data-caption="${d.date}${pageCaption}${n}">
+            <figcaption>${pageFig}${n}</figcaption>
           </figure>`;
         }).join('')}
       </div>`;
     wrap.appendChild(entry);
   });
 
-  // voortgangslijn volgt het midden van het scherm
   function updateFill() {
     const r = wrap.getBoundingClientRect();
     const h = Math.max(0, Math.min(innerHeight * .5 - r.top, r.height));
@@ -86,21 +99,21 @@
   document.body.appendChild(chip);
   const dcDay = chip.querySelector('.dc-day');
   const dcDate = chip.querySelector('.dc-date');
+  const dayBadge = I18N.t('dayBadge');
+  const dayPrefix = I18N.t('dayPrefix');
   let inTimeline = false;
 
-  // welke dag staat in het midden van het scherm?
   const centerIO = new IntersectionObserver(entries => {
     entries.forEach(en => {
       if (!en.isIntersecting) return;
       const d = en.target.dataset;
-      dcDay.textContent = d.lbl === 'dag' ? 'Dag ' + d.day : d.lbl;
+      dcDay.textContent = d.lbl === dayBadge ? dayPrefix + d.day : d.lbl;
       dcDate.textContent = d.date;
       if (inTimeline) chip.classList.add('show');
     });
   }, { rootMargin: '-40% 0px -40%', threshold: 0 });
   document.querySelectorAll('.entry').forEach(el => centerIO.observe(el));
 
-  // enkel tonen zolang de tijdlijn in beeld is
   const sectionIO = new IntersectionObserver(([en]) => {
     inTimeline = en.isIntersecting;
     if (!inTimeline) chip.classList.remove('show');
@@ -160,8 +173,6 @@
 
 // ---------- kaart ----------
 (function buildMap() {
-  // ruime render-marge: zo blijven de routelijnen ook ver buiten beeld
-  // getekend en verschijnt de oude route niet "opnieuw" na het panverschuiven
   const map = L.map('map', {
     scrollWheelZoom: false,
     renderer: L.svg({ padding: 4 })
@@ -171,8 +182,8 @@
     maxZoom: 17
   }).addTo(map);
 
-  const retreatLatLngs = ROUTE_RETREAT.map(p => [p.lat, p.lng]);
-  const returnLatLngs  = ROUTE_RETURN.map(p => [p.lat, p.lng]);
+  const retreatLatLngs = ROUTE_RETREAT_L.map(p => [p.lat, p.lng]);
+  const returnLatLngs  = ROUTE_RETURN_L.map(p => [p.lat, p.lng]);
 
   const retreatLine = L.polyline(retreatLatLngs, {
     color: '#b03a26', weight: 4, opacity: .85, dashArray: '10 7'
@@ -183,9 +194,6 @@
 
   function addMarkers(list, cls) {
     list.forEach(p => {
-      if (!p.note && cls === 'return' && p.day === 19 && p.name !== 'Deinze') {
-        // tussenstops op de terugweg zonder anekdote: klein puntje
-      }
       const icon = L.divIcon({
         className: '',
         html: `<div class="day-marker ${cls}">${p.day}</div>`,
@@ -194,35 +202,30 @@
       L.marker([p.lat, p.lng], { icon })
         .addTo(map)
         .bindPopup(`
-          <span class="popup-day">${p.day <= 19 ? 'Oorlogsdag ' + p.day : (p.day === 20 ? 'Terugkeer · 29 mei' : 'Thuiskomst · 30 mei')}</span>
+          <span class="popup-day">${I18N.dayLabelFor(p.day)}</span>
           <div class="popup-name">${p.name}</div>
           ${p.note ? `<div class="popup-note">«${p.note}»</div>` : ''}`);
     });
   }
-  addMarkers(ROUTE_RETREAT, 'retreat');
-  addMarkers(ROUTE_RETURN.filter(p => p.note || ['Lier','Aarschot','Diest'].includes(p.name)), 'return');
+  addMarkers(ROUTE_RETREAT_L, 'retreat');
+  addMarkers(ROUTE_RETURN_L.filter(p => p.note || ['Lier','Aarschot','Diest'].includes(p.name)), 'return');
 
   const fullBounds = retreatLine.getBounds().extend(returnLine.getBounds());
   map.fitBounds(fullBounds, { padding: [36, 36] });
 
-  // ---- route-animatie: ingezoomd meereizen, met dagboekfragmenten bij de haltes ----
   const playBtn = document.getElementById('playRoute');
+  playBtn.textContent = I18N.t('playRoute');
   const PLAY_ZOOM = 11;
 
-  // eerste dagboekfoto per dag, voor de fragmenten onderweg
   const dayPhoto = {};
-  DIARY.forEach(d => { dayPhoto[d.day] = d.photos[0]; });
+  DIARY_L.forEach(d => { dayPhoto[d.day] = d.photos[0]; });
 
   const allPoints = [
-    ...ROUTE_RETREAT.map(p => ({ p, line: retreatLine })),
-    ...ROUTE_RETURN.map(p => ({ p, line: returnLine }))
+    ...ROUTE_RETREAT_L.map(p => ({ p, line: retreatLine })),
+    ...ROUTE_RETURN_L.map(p => ({ p, line: returnLine }))
   ];
 
   let playing = false, timer = null, walker = null, popup = null;
-
-  function dayLabel(day) {
-    return day <= 19 ? 'Oorlogsdag ' + day : (day === 20 ? 'Terugkeer · 29 mei' : 'Thuiskomst · 30 mei');
-  }
 
   function stopPlayback() {
     playing = false;
@@ -232,17 +235,16 @@
     retreatLine.setLatLngs(retreatLatLngs);
     returnLine.setLatLngs(returnLatLngs);
     map.flyToBounds(fullBounds, { padding: [36, 36], duration: 1.2 });
-    playBtn.textContent = '▶ Speel de route af';
+    playBtn.textContent = I18N.t('playRoute');
   }
 
   playBtn.addEventListener('click', () => {
     if (playing) { stopPlayback(); return; }
     playing = true;
-    playBtn.textContent = '◼ Stop';
+    playBtn.textContent = I18N.t('stopRoute');
     retreatLine.setLatLngs([]);
     returnLine.setLatLngs([]);
 
-    // DOM-marker i.p.v. circleMarker: blijft constant van grootte tijdens het zoomen
     walker = L.marker([allPoints[0].p.lat, allPoints[0].p.lng], {
       icon: L.divIcon({
         className: '',
@@ -252,14 +254,12 @@
       zIndexOffset: 1000, interactive: false
     }).addTo(map);
 
-    // eerst inzoomen op het vertrekpunt, dan pas vertrekken
     map.flyTo([allPoints[0].p.lat, allPoints[0].p.lng], PLAY_ZOOM, { duration: 1.6 });
 
     let i = 0;
     function step() {
       if (!playing) return;
       if (i >= allPoints.length) {
-        // even blijven staan op het eindpunt, dan uitzoomen naar het overzicht
         timer = setTimeout(stopPlayback, 2200);
         return;
       }
@@ -271,14 +271,14 @@
 
       let delay = 850;
       if (p.note) {
-        // halte: toon het bijhorende dagboekfragment in het klein
         const ph = dayPhoto[p.day];
+        const pageFig = I18N.t('pageFig');
         popup = L.popup({ offset: [0, -12], closeButton: false, autoPan: false, className: 'route-popup' })
           .setLatLng(ll)
           .setContent(`<div class="rp">
-              ${ph ? `<img src="img/stevens-${ph}.jpg" alt="Dagboekpagina ${ph}">` : ''}
+              ${ph ? `<img src="img/stevens-${ph}.jpg" alt="${pageFig}${ph}">` : ''}
               <div>
-                <span class="popup-day">${dayLabel(p.day)}</span>
+                <span class="popup-day">${I18N.dayLabelFor(p.day)}</span>
                 <div class="popup-name">${p.name}</div>
                 <div class="popup-note">«${p.note}»</div>
               </div>
@@ -298,7 +298,6 @@
 
 // ---------- 3D bladerboek ----------
 (function flipbook() {
-  // volgorde: de kaft (foto 65) eerst, daarna pagina 1 t/m 64
   const SEQ = [65, ...Array.from({ length: 64 }, (_, i) => i + 1)];
   const view = document.getElementById('bookview');
   const book = document.getElementById('book');
@@ -317,7 +316,6 @@
   const url = n => `img/stevens-${n}.jpg`;
   const bg = n => `url("${url(n)}")`;
 
-  // helpers: een helft van een spread, de (staande) kaft onvervormd, of leeg
   function setHalf(el, n, side) {
     el.style.backgroundImage = bg(n);
     el.style.backgroundSize = '200% 100%';
@@ -334,7 +332,7 @@
 
   function caption() {
     const n = SEQ[pos];
-    const label = pos === 0 ? 'De kaft — 10 mei · 28 mei 1940' : `Dagboekpagina ${n}`;
+    const label = pos === 0 ? I18N.t('bookCoverLabel') : I18N.t('pageFig') + n;
     cap.innerHTML = `${label}<span class="bv-count">${pos + 1} / ${SEQ.length}</span>`;
     btnPrev.disabled = pos === 0;
     btnNext.disabled = pos === SEQ.length - 1;
@@ -344,7 +342,6 @@
   function render() {
     const n = SEQ[pos];
     if (pos === 0) {
-      // gesloten boek: kaft onvervormd op de rechterhelft, links niets
       setEmpty(baseL);
       setCover(baseR);
     } else {
@@ -355,7 +352,6 @@
     leaf.classList.remove('animate');
     leaf.style.transform = '';
     caption();
-    // buurpagina's voorladen zodat het omslaan vlot blijft
     [pos - 1, pos + 1].forEach(p => {
       if (p >= 0 && p < SEQ.length) { const im = new Image(); im.src = url(SEQ[p]); }
     });
@@ -364,8 +360,6 @@
   function finishFlip(nextPos) {
     leaf.removeEventListener('transitionend', onEnd);
     pos = nextPos;
-    // eerst de onderliggende pagina's definitief zetten, pas het frame
-    // daarna het blad verbergen — zo is er geen zichtbare wissel
     const n = SEQ[pos];
     if (pos === 0) {
       setEmpty(baseL);
@@ -395,10 +389,8 @@
     const cur = SEQ[pos], nxt = SEQ[target];
 
     if (dir > 0) {
-      // vooruit: rechterblad slaat naar links om
       leaf.className = 'leaf on-right';
       if (pos === 0) {
-        // het boek openslaan: de volledige kaft draait om
         setEmpty(baseL);
         setHalf(baseR, nxt, 'r');
         setCover(front);
@@ -413,14 +405,11 @@
       leaf.style.transform = 'rotateY(0deg)';
       requestAnimationFrame(() => requestAnimationFrame(() => {
         leaf.classList.add('animate');
-        // net geen 180°: het blad valt zo nooit exact samen met de pagina eronder
         leaf.style.transform = 'rotateY(-179.6deg)';
       }));
     } else {
-      // terug: linkerblad slaat naar rechts om
       leaf.className = 'leaf on-left';
       if (target === 0) {
-        // terug naar de gesloten kaft
         setEmpty(baseL);
         setHalf(baseR, cur, 'r');
         setHalf(front, cur, 'l');
@@ -441,7 +430,6 @@
 
     onEnd = () => finishFlip(target);
     leaf.addEventListener('transitionend', onEnd, { once: true });
-    // vangnet voor het geval transitionend niet vuurt
     setTimeout(() => { if (flipping) finishFlip(target); }, 1400);
   }
 
@@ -457,7 +445,6 @@
     view.setAttribute('aria-hidden', 'true');
   }
 
-  // openen: via kaft-knop of via eender welke dagboekfoto
   document.getElementById('openBookBtn').addEventListener('click', () => open(65));
   document.addEventListener('click', e => {
     if (e.target.matches('img[data-photo]')) open(+e.target.dataset.photo);

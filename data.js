@@ -520,3 +520,43 @@ const HIST = {
     bron: "historiografie Achttiendaagse Veldtocht"
   }
 };
+
+// ==========================================================
+// Locale helpers — NL is de basis; FR/EN komen uit overlays
+// (data-fr.js / data-en.js, geladen vóór app.js)
+// ==========================================================
+
+function getLocalizedDiary(lang) {
+  if (lang === 'fr' && typeof DIARY_FR !== 'undefined') {
+    return DIARY.map(d => {
+      const o = DIARY_FR[d.day];
+      return o ? Object.assign({}, d, o) : d;
+    });
+  }
+  if (lang === 'en' && typeof DIARY_EN !== 'undefined') {
+    return DIARY.map(d => {
+      const o = DIARY_EN[d.day];
+      return o ? Object.assign({}, d, o) : d;
+    });
+  }
+  return DIARY;
+}
+
+function getLocalizedHist(lang) {
+  if (lang === 'fr' && typeof HIST_FR !== 'undefined') return HIST_FR;
+  if (lang === 'en' && typeof HIST_EN !== 'undefined') return HIST_EN;
+  return HIST;
+}
+
+function localizeRoute(list, lang, which) {
+  const pack = lang === 'fr' && typeof NOTES_FR !== 'undefined' ? NOTES_FR
+    : lang === 'en' && typeof NOTES_EN !== 'undefined' ? NOTES_EN
+    : null;
+  if (!pack) return list;
+  const notes = pack[which] || {};
+  return list.map(p => {
+    if (!p.note) return p;
+    const n = notes[p.name];
+    return n ? Object.assign({}, p, { note: n }) : p;
+  });
+}
