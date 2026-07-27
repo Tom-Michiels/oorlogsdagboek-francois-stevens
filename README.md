@@ -11,7 +11,7 @@ Veldtocht van 10 tot 28 mei 1940.
 **Talen:** Nederlands · Français · English (taalwisselaar in de navigatie, of `?lang=nl|fr|en`)
 
 - Volledige transcriptie van alle 65 pagina's, dag per dag op een tijdlijn
-- Interactieve kaart met de route van de terugtocht en de terugkeer naar huis
+- Interactieve kaart met de route van de terugtocht en de terugkeer naar huis (achtergrond: NGI-topokaart 1939; moderne OSM als alternatief)
 - 3D-bladerboek waarin je door het originele schriftje kunt bladeren
 
 De site is puur HTML/CSS/JavaScript, zonder build-stap. Open `index.html` lokaal of bezoek de

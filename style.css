@@ -281,8 +281,30 @@ figure.intro-photo {
 #map {
   height: 560px; border: 10px solid #fff;
   box-shadow: 0 16px 44px rgba(42,35,32,.4);
-  filter: sepia(.28) saturate(.85);
+  /* Lichte tint: de NGI-kaart 1939 is al historisch van toon */
+  filter: sepia(.12) saturate(.92) contrast(1.02);
   z-index: 1;
+}
+#map .leaflet-control-layers {
+  border: 1px solid var(--sepia-line);
+  border-radius: 2px;
+  background: var(--card);
+  box-shadow: 0 6px 18px rgba(42,35,32,.28);
+  font-family: var(--font-ui);
+  font-size: .78rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+#map .leaflet-control-layers-toggle {
+  width: 36px; height: 36px;
+}
+#map .leaflet-control-layers label {
+  font-weight: 400; color: var(--ink);
+}
+#map .leaflet-control-attribution {
+  background: rgba(247, 241, 230, .88);
+  color: var(--ink-soft);
+  font-size: .68rem;
 }
 .map-legend { text-align: center; margin-bottom: 20px; font-family: var(--font-ui); font-weight: 300; letter-spacing: .06em; }
 .leg { margin: 0 16px; font-size: .95rem; }
