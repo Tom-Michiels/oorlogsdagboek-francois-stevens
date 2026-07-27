@@ -3,7 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Interactieve website rond het handgeschreven oorlogsdagboek van soldaat François Stevens tijdens de Achttiendaagse Veldtocht (10–28 mei 1940).">
 <title>Oorlogsdagboek François Stevens — 10 mei · 28 mei 1940</title>
+<link rel="alternate" hreflang="nl" href="?lang=nl">
+<link rel="alternate" hreflang="fr" href="?lang=fr">
+<link rel="alternate" hreflang="en" href="?lang=en">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Oswald:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -18,13 +22,13 @@
   <div class="hero-grain"></div>
   <div class="hero-content">
     <div class="tricolore"></div>
-    <p class="hero-kicker">Oorlogsdagboek · De Achttiendaagse Veldtocht</p>
+    <p class="hero-kicker" data-i18n="heroKicker">Oorlogsdagboek · De Achttiendaagse Veldtocht</p>
     <h1 class="hero-title"><span id="typewriter"></span><span class="cursor">|</span></h1>
-    <p class="hero-sub">Soldaat <strong>François Stevens</strong> — Milicien der klas 1938<br>
+    <p class="hero-sub" data-i18n-html="heroSubHtml">Soldaat <strong>François Stevens</strong> — Milicien der klas 1938<br>
       1<sup>e</sup> Regiment Artillerie · III<sup>e</sup> Groep · 7<sup>e</sup> Batterij · Kanon n° 211<br>
       <span class="stamnr">Stamnummer 151/41689</span></p>
-    <div class="hero-dates">10 MEI <span class="dash">—</span> 28 MEI 1940</div>
-    <a href="#intro" class="hero-scroll" aria-label="Scroll naar beneden">
+    <div class="hero-dates" data-i18n-html="heroDatesHtml">10 MEI <span class="dash">—</span> 28 MEI 1940</div>
+    <a href="#intro" class="hero-scroll" data-i18n-aria="scrollAria" aria-label="Scroll naar beneden">
       <span class="chevron"></span>
     </a>
   </div>
@@ -34,11 +38,18 @@
 <nav class="topnav" id="topnav">
   <div class="nav-inner">
     <span class="nav-brand">FRANÇOIS STEVENS · 1940</span>
-    <div class="nav-links">
-      <a href="#intro">Het dagboek</a>
-      <a href="#kaart">De kaart</a>
-      <a href="#tijdlijn">De tijdlijn</a>
-      <a href="#epiloog">Epiloog</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#intro" data-i18n="navDiary">Het dagboek</a>
+        <a href="#kaart" data-i18n="navMap">De kaart</a>
+        <a href="#tijdlijn" data-i18n="navTimeline">De tijdlijn</a>
+        <a href="#epiloog" data-i18n="navEpilogue">Epiloog</a>
+      </div>
+      <div class="lang-switch" role="group" data-i18n-aria="langLabel" aria-label="Taal">
+        <button type="button" class="lang-btn" data-lang="nl" aria-pressed="true">NL</button>
+        <button type="button" class="lang-btn" data-lang="fr" aria-pressed="false">FR</button>
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
     </div>
   </div>
   <div class="nav-progress" id="navProgress"></div>
@@ -52,27 +63,29 @@
         <span class="pc pc-tl"></span><span class="pc pc-tr"></span>
         <span class="pc pc-bl"></span><span class="pc pc-br"></span>
         <img src="img/portret.jpg" data-photo="2"
+             data-i18n-caption="portraitCaption"
              data-caption="Soldaat François Stevens — portret en identiteitspagina"
+             data-i18n-alt="portraitAlt"
              alt="Portret van soldaat François Stevens in overjas, met zijn Adrianhelm op een sokkel, 1940">
-        <figcaption>François Stevens, schrijver van dit dagboek (mei 1940)</figcaption>
+        <figcaption data-i18n="portraitFig">François Stevens, schrijver van dit dagboek (mei 1940)</figcaption>
       </figure>
       <div class="intro-text reveal">
-        <h2 class="section-title">Een klein schriftje,<br>een grote geschiedenis</h2>
+        <h2 class="section-title" data-i18n-html="introTitleHtml">Een klein schriftje,<br>een grote geschiedenis</h2>
         <div class="rule tricolore-rule"></div>
-        <p>Na een mobilisatie van <strong>259 dagen</strong> wordt het Belgische leger op 10 mei 1940 in de oorlog tegen Duitsland betrokken. François Stevens, kleermaker en magazijnier van zijn batterij, dient aan het kanon T.R.A. 75 — <em>n° 211</em>.</p>
-        <p>In een geruit schoolschriftje, versierd met de Belgische driekleur, hield hij dag na dag bij wat zijn batterij overkwam: van de eerste Duitse verkenningsvliegtuigen boven Diepenbeek tot de capitulatie, de krijgsgevangenschap en zijn ontsnapping — in burgerkleren, met een geleende kinderwagen, terug naar huis.</p>
-        <blockquote class="diary-quote">«Samen met de geallieerde legers zullen wij den vijand bestrijden.»</blockquote>
+        <p data-i18n-html="introP1Html">Na een mobilisatie van <strong>259 dagen</strong> wordt het Belgische leger op 10 mei 1940 in de oorlog tegen Duitsland betrokken. François Stevens, kleermaker en magazijnier van zijn batterij, dient aan het kanon T.R.A. 75 — <em>n° 211</em>.</p>
+        <p data-i18n="introP2">In een geruit schoolschriftje, versierd met de Belgische driekleur, hield hij dag na dag bij wat zijn batterij overkwam: van de eerste Duitse verkenningsvliegtuigen boven Diepenbeek tot de capitulatie, de krijgsgevangenschap en zijn ontsnapping — in burgerkleren, met een geleende kinderwagen, terug naar huis.</p>
+        <blockquote class="diary-quote" data-i18n="introQuote">«Samen met de geallieerde legers zullen wij den vijand bestrijden.»</blockquote>
         <button class="btn-book" id="openBookBtn">
-          <img src="img/stevens-65.jpg" alt="De kaft van het dagboek" class="btn-book-cover">
-          <span class="btn-book-label">Blader door het boekje<br><small>alle 65 pagina's, blad per blad</small></span>
+          <img src="img/stevens-65.jpg" data-i18n-alt="bookCoverAlt" alt="De kaft van het dagboek" class="btn-book-cover">
+          <span class="btn-book-label" data-i18n-html="bookBtnHtml">Blader door het boekje<br><small>alle 65 pagina's, blad per blad</small></span>
         </button>
       </div>
     </div>
     <div class="stats-strip reveal">
-      <div class="stat"><span class="stat-num" data-count="19">0</span><span class="stat-label">oorlogsdagen</span></div>
-      <div class="stat"><span class="stat-num" data-count="259">0</span><span class="stat-label">dagen mobilisatie</span></div>
-      <div class="stat"><span class="stat-num" data-count="318">0</span><span class="stat-label">schoten op één dag</span></div>
-      <div class="stat"><span class="stat-num" data-count="210">0</span><span class="stat-label">km terug naar huis</span></div>
+      <div class="stat"><span class="stat-num" data-count="19">0</span><span class="stat-label" data-i18n="statWarDays">oorlogsdagen</span></div>
+      <div class="stat"><span class="stat-num" data-count="259">0</span><span class="stat-label" data-i18n="statMobilisation">dagen mobilisatie</span></div>
+      <div class="stat"><span class="stat-num" data-count="318">0</span><span class="stat-label" data-i18n="statShots">schoten op één dag</span></div>
+      <div class="stat"><span class="stat-num" data-count="210">0</span><span class="stat-label" data-i18n="statKmHome">km terug naar huis</span></div>
     </div>
   </div>
 </section>
@@ -80,24 +93,24 @@
 <!-- ====================== KAART ====================== -->
 <section class="mapsection" id="kaart">
   <div class="container">
-    <h2 class="section-title centered reveal">De route van de batterij</h2>
+    <h2 class="section-title centered reveal" data-i18n="mapTitle">De route van de batterij</h2>
     <div class="rule tricolore-rule centered reveal"></div>
-    <p class="section-sub reveal">Van Diepenbeek tot Hooglede — en te voet, per fiets en op Duitse camions weer naar huis.</p>
+    <p class="section-sub reveal" data-i18n="mapSub">Van Diepenbeek tot Hooglede — en te voet, per fiets en op Duitse camions weer naar huis.</p>
     <div class="map-legend reveal">
-      <span class="leg leg-retreat">— De terugtocht (10–27 mei)</span>
-      <span class="leg leg-return">— De terugkeer naar huis (28–30 mei)</span>
+      <span class="leg leg-retreat" data-i18n="legendRetreat">— De terugtocht (10–27 mei)</span>
+      <span class="leg leg-return" data-i18n="legendReturn">— De terugkeer naar huis (28–30 mei)</span>
     </div>
     <div id="map" class="reveal"></div>
-    <p class="map-hint reveal">Klik op de punten voor een fragment uit het dagboek. <button id="playRoute" class="btn-play">▶ Speel de route af</button></p>
+    <p class="map-hint reveal"><span data-i18n="mapHintBefore">Klik op de punten voor een fragment uit het dagboek. </span><button id="playRoute" class="btn-play">▶ Speel de route af</button></p>
   </div>
 </section>
 
 <!-- ====================== TIJDLIJN ====================== -->
 <section class="timeline-section" id="tijdlijn">
   <div class="container">
-    <h2 class="section-title centered reveal">Dag na dag</h2>
+    <h2 class="section-title centered reveal" data-i18n="timelineTitle">Dag na dag</h2>
     <div class="rule tricolore-rule centered reveal"></div>
-    <p class="section-sub reveal">De volledige transcriptie, in de woorden en de spelling van 1940.</p>
+    <p class="section-sub reveal" data-i18n-timeline-sub>De volledige transcriptie, in de woorden en de spelling van 1940.</p>
   </div>
   <div class="timeline" id="timeline"><!-- gevuld door app.js --></div>
 </section>
@@ -106,14 +119,14 @@
 <section class="epilogue" id="epiloog">
   <div class="container">
     <div class="epilogue-inner reveal">
-      <h2 class="section-title centered">Epiloog</h2>
+      <h2 class="section-title centered" data-i18n="epilogueTitle">Epiloog</h2>
       <div class="rule tricolore-rule centered"></div>
-      <p class="epilogue-text">«Helaas, deze tehuiskomst zal de grootste teleurstelling zijn die ik tot hiertoe meemaakte. Ik vind de deuren gesloten en niemand tehuis.»</p>
-      <p class="epilogue-detail">In drie dagen legde François Stevens zo'n 210 kilometer af — per fiets, op een koolkar, te voet en op Duitse vrachtwagens. Achteraan in het schriftje plakte hij een portret van koning Leopold III, met daaronder één zin:</p>
-      <p class="epilogue-toll">5.882 Belgische militairen sneuvelden</p>
+      <p class="epilogue-text" data-i18n="epilogueQuote">«Helaas, deze tehuiskomst zal de grootste teleurstelling zijn die ik tot hiertoe meemaakte. Ik vind de deuren gesloten en niemand tehuis.»</p>
+      <p class="epilogue-detail" data-i18n="epilogueDetail">In drie dagen legde François Stevens zo'n 210 kilometer af — per fiets, op een koolkar, te voet en op Duitse vrachtwagens. Achteraan in het schriftje plakte hij een portret van koning Leopold III, met daaronder één zin:</p>
+      <p class="epilogue-toll" data-i18n="epilogueToll">5.882 Belgische militairen sneuvelden</p>
       <figure class="epilogue-photo">
-        <img src="img/stevens-64.jpg" alt="Laatste pagina van het dagboek met portret van Leopold III" loading="lazy">
-        <figcaption>De laatste pagina van het dagboek</figcaption>
+        <img src="img/stevens-64.jpg" data-i18n-alt="epiloguePhotoAlt" alt="Laatste pagina van het dagboek met portret van Leopold III" loading="lazy">
+        <figcaption data-i18n="epiloguePhotoFig">De laatste pagina van het dagboek</figcaption>
       </figure>
     </div>
   </div>
@@ -121,13 +134,13 @@
 
 <footer class="footer">
   <div class="tricolore"></div>
-  <p>Oorlogsdagboek van François Stevens · 1<sup>e</sup> Regiment Artillerie · 10 – 28 mei 1940</p>
-  <p class="footer-small">Transcriptie van het originele handschrift. Onleesbare passages zijn aangeduid met [onleesbaar].</p>
+  <p data-i18n-html="footerHtml">Oorlogsdagboek van François Stevens · 1<sup>e</sup> Regiment Artillerie · 10 – 28 mei 1940</p>
+  <p class="footer-small" data-i18n="footerSmall">Transcriptie van het originele handschrift. Onleesbare passages zijn aangeduid met [onleesbaar].</p>
 </footer>
 
 <!-- ====================== 3D BLADERBOEK ====================== -->
 <div class="bookview" id="bookview" aria-hidden="true">
-  <button class="bv-close" id="bvClose" aria-label="Sluiten">&times;</button>
+  <button class="bv-close" id="bvClose" data-i18n-aria="closeAria" aria-label="Sluiten">&times;</button>
   <div class="book-stage">
     <div class="book" id="book">
       <div class="page-base base-l" id="baseL"></div>
@@ -137,20 +150,23 @@
         <div class="face back"></div>
       </div>
       <div class="book-spine"></div>
-      <div class="hotzone hz-l" id="hzL" title="Vorige pagina"></div>
-      <div class="hotzone hz-r" id="hzR" title="Volgende pagina"></div>
+      <div class="hotzone hz-l" id="hzL" data-i18n-title="prevPage" title="Vorige pagina"></div>
+      <div class="hotzone hz-r" id="hzR" data-i18n-title="nextPage" title="Volgende pagina"></div>
     </div>
   </div>
   <div class="bv-bar">
-    <button id="bvPrev" aria-label="Vorige pagina">&#10094;</button>
+    <button id="bvPrev" data-i18n-aria="prevPage" aria-label="Vorige pagina">&#10094;</button>
     <span class="bv-caption" id="bvCaption"></span>
-    <button id="bvNext" aria-label="Volgende pagina">&#10095;</button>
+    <button id="bvNext" data-i18n-aria="nextPage" aria-label="Volgende pagina">&#10095;</button>
   </div>
-  <p class="bv-hint">Klik op de rechter- of linkerhelft om te bladeren · pijltjestoetsen werken ook</p>
+  <p class="bv-hint" data-i18n="bookHint">Klik op de rechter- of linkerhelft om te bladeren · pijltjestoetsen werken ook</p>
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="i18n.js"></script>
 <script src="data.js"></script>
+<script src="data-fr.js"></script>
+<script src="data-en.js"></script>
 <script src="app.js"></script>
 <script data-goatcounter="https://oorlogsdagboek-stevens.goatcounter.com/count"
         async src="https://gc.zgo.at/count.js"></script>

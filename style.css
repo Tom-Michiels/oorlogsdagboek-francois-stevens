@@ -128,16 +128,34 @@ body {
 }
 .nav-inner {
   max-width: 1100px; margin: 0 auto; padding: 12px 24px;
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
 }
-.nav-brand { font-family: var(--font-head); color: var(--accent-yellow); letter-spacing: .12em; font-size: .95rem; }
+.nav-brand { font-family: var(--font-head); color: var(--accent-yellow); letter-spacing: .12em; font-size: .95rem; flex-shrink: 0; }
+.nav-right { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; justify-content: flex-end; }
 .nav-links a {
   font-family: var(--font-ui); font-weight: 300; text-transform: uppercase;
   letter-spacing: .18em; font-size: .78rem;
   color: var(--paper-dark); text-decoration: none; margin-left: 26px;
   transition: color .25s;
 }
+.nav-links a:first-child { margin-left: 0; }
 .nav-links a:hover { color: var(--accent-yellow); }
+.lang-switch {
+  display: inline-flex; align-items: stretch;
+  border: 1px solid rgba(217,165,33,.35);
+  background: rgba(0,0,0,.25);
+}
+.lang-btn {
+  font-family: var(--font-ui); font-weight: 400; text-transform: uppercase;
+  letter-spacing: .12em; font-size: .68rem;
+  color: var(--paper-dark); background: transparent; border: 0;
+  padding: 6px 9px; cursor: pointer; transition: color .2s, background .2s;
+}
+.lang-btn:hover { color: var(--accent-yellow); }
+.lang-btn.active {
+  color: var(--charcoal); background: var(--accent-yellow);
+}
+.lang-btn + .lang-btn { border-left: 1px solid rgba(217,165,33,.25); }
 .nav-progress { height: 3px; width: 0; background: linear-gradient(to right, #000, var(--accent-yellow), var(--accent-red)); transition: width .15s linear; }
 
 /* ==========================================================
@@ -687,6 +705,9 @@ figure.intro-photo {
   .entry-feature { margin-top: 24px; padding: 0; opacity: 1; transform: none; }
   .feat img { max-width: 100%; }
   .day-chip { left: 12px; bottom: 12px; padding: 9px 14px; min-width: 120px; }
+  .nav-inner { flex-wrap: wrap; padding: 10px 16px; }
+  .nav-right { width: 100%; justify-content: space-between; gap: 10px; }
   .nav-links a { margin-left: 14px; font-size: .68rem; letter-spacing: .1em; }
+  .lang-btn { padding: 5px 8px; font-size: .62rem; }
   #map { height: 420px; }
 }
