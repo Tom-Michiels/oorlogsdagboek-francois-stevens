@@ -14,3 +14,14 @@ Veldtocht van 10 tot 28 mei 1940.
 
 De site is puur HTML/CSS/JavaScript, zonder build-stap. Open `index.html` lokaal of bezoek de
 [GitHub Pages-versie](https://tom-michiels.github.io/oorlogsdagboek-francois-stevens/).
+
+## Bezoekersstatistieken (GoatCounter)
+
+De site telt pageviews via [GoatCounter](https://www.goatcounter.com/) (privacyvriendelijk, geen cookies).
+
+1. Maak een gratis account op https://www.goatcounter.com/signup
+2. Kies als site-code precies: `oorlogsdagboek-stevens`
+3. Bevestig je e-mailadres
+
+Daarna zie je de statistieken op:
+https://oorlogsdagboek-stevens.goatcounter.com
