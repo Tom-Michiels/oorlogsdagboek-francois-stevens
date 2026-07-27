@@ -1,9 +1,9 @@
 // ==========================================================
-// i18n — Nederlands · Français · English
+// i18n — Nederlands · Français · English · Deutsch
 // ==========================================================
 
 const I18N = (() => {
-  const SUPPORTED = ['nl', 'fr', 'en'];
+  const SUPPORTED = ['nl', 'fr', 'en', 'de'];
   const STORAGE_KEY = 'oorlogsdagboek-lang';
 
   const ui = {
@@ -192,6 +192,68 @@ const I18N = (() => {
       bookHint: 'Click the right or left half to turn pages · arrow keys work too',
       bookCoverLabel: 'The cover — 10 May · 28 May 1940',
       langLabel: 'Language'
+    },
+    de: {
+      metaTitle: 'Kriegstagebuch François Stevens — 10. Mai · 28. Mai 1940',
+      metaDescription: 'Interaktive Website rund um das handgeschriebene Kriegstagebuch des Soldaten François Stevens während des Achtzehntagefeldzugs (10.–28. Mai 1940).',
+      heroKicker: 'Kriegstagebuch · Der Achtzehntagefeldzug',
+      typewriter: 'Kriegstagebuch von\nFrançois Stevens',
+      heroSubHtml: 'Soldat <strong>François Stevens</strong> — Miliz der Klasse 1938<br>1. Artillerieregiment · III. Gruppe · 7. Batterie · Geschütz n° 211<br><span class="stamnr">Stammnummer 151/41689</span>',
+      heroDatesHtml: '10. MAI <span class="dash">—</span> 28. MAI 1940',
+      scrollAria: 'Nach unten scrollen',
+      navDiary: 'Das Tagebuch',
+      navMap: 'Die Karte',
+      navTimeline: 'Die Zeitleiste',
+      navEpilogue: 'Epilog',
+      portraitCaption: 'Soldat François Stevens — Porträt und Identitätsseite',
+      portraitAlt: 'Porträt des Soldaten François Stevens im Mantel, mit seinem Adrian-Helm auf einem Sockel, 1940',
+      portraitFig: 'François Stevens, Verfasser dieses Tagebuchs (Mai 1940)',
+      introTitleHtml: 'Ein kleines Heft,<br>eine große Geschichte',
+      introP1Html: 'Nach einer Mobilmachung von <strong>259 Tagen</strong> wird die belgische Armee am 10. Mai 1940 in den Krieg gegen Deutschland verwickelt. François Stevens, Schneider und Magazinier seiner Batterie, dient am Geschütz T.R.A. 75 — <em>n° 211</em>.',
+      introP2: 'In einem karierten Schulheft, verziert mit der belgischen Trikolore, hielt er Tag für Tag fest, was seiner Batterie widerfuhr: von den ersten deutschen Aufklärungsflugzeugen über Diepenbeek bis zur Kapitulation, der Kriegsgefangenschaft und seiner Flucht — in Zivilkleidung, mit einem geliehenen Kinderwagen, zurück nach Hause.',
+      introQuote: '«Zusammen mit den alliierten Armeen werden wir den Feind bekämpfen.»',
+      bookCoverAlt: 'Der Umschlag des Tagebuchs',
+      bookBtnHtml: 'Das Heft durchblättern<br><small>alle 65 Seiten, Blatt für Blatt</small>',
+      statWarDays: 'Kriegstage',
+      statMobilisation: 'Tage Mobilmachung',
+      statShots: 'Schüsse an einem Tag',
+      statKmHome: 'km zurück nach Hause',
+      mapTitle: 'Die Route der Batterie',
+      mapSub: 'Von Diepenbeek bis Hooglede — und zu Fuß, per Fahrrad und auf deutschen Lastwagen wieder nach Hause. Oben rechts zur NGI-Karte von 1939 wechseln für das Straßennetz von damals.',
+      legendRetreat: '— Der Rückzug (10.–27. Mai)',
+      legendReturn: '— Die Heimkehr (28.–30. Mai)',
+      basemapHistoric: 'Karte 1939 (NGI)',
+      basemapModern: 'Moderne Karte',
+      mapHintBefore: 'Klicken Sie auf die Punkte für einen Auszug aus dem Tagebuch. ',
+      playRoute: '▶ Route abspielen',
+      stopRoute: '◼ Stopp',
+      timelineTitle: 'Tag für Tag',
+      timelineSub: 'Die vollständige Transkription, in den Worten und der Schreibweise von 1940.',
+      timelineSubTranslated: 'Übersetzung der Transkription; das niederländische Original behält die Schreibweise von 1940.',
+      histHead: 'Historische Einordnung',
+      histSource: 'Quelle',
+      dayPrefix: 'Tag ',
+      dayBadge: 'Tag',
+      warDay: 'Kriegstag ',
+      returnDay20: 'Rückkehr · 29. Mai',
+      returnDay21: 'Heimkehr · 30. Mai',
+      pageAlt: 'Tagebuchseite, Foto ',
+      pageCaption: ' — Tagebuchseite ',
+      pageFig: 'Tagebuchseite ',
+      epilogueTitle: 'Epilog',
+      epilogueQuote: '«Leider wird diese Heimkehr die größte Enttäuschung sein, die ich bisher erlebt habe. Ich finde die Türen verschlossen und niemanden zu Hause.»',
+      epilogueDetail: 'In drei Tagen legte François Stevens etwa 210 Kilometer zurück — per Fahrrad, auf einem Kohlewagen, zu Fuß und auf deutschen Lastwagen. Hinten im Heft klebte er ein Porträt von König Leopold III., mit einem einzigen Satz darunter:',
+      epilogueToll: '5.882 belgische Soldaten fielen',
+      epiloguePhotoAlt: 'Letzte Seite des Tagebuchs mit Porträt von Leopold III.',
+      epiloguePhotoFig: 'Die letzte Seite des Tagebuchs',
+      footerHtml: 'Kriegstagebuch von François Stevens · 1. Artillerieregiment · 10. – 28. Mai 1940',
+      footerSmall: 'Transkription der Originalhandschrift. Unleserliche Passagen sind mit [unleserlich] gekennzeichnet.',
+      closeAria: 'Schließen',
+      prevPage: 'Vorherige Seite',
+      nextPage: 'Nächste Seite',
+      bookHint: 'Klicken Sie auf die rechte oder linke Hälfte zum Blättern · Pfeiltasten funktionieren ebenfalls',
+      bookCoverLabel: 'Der Umschlag — 10. Mai · 28. Mai 1940',
+      langLabel: 'Sprache'
     }
   };
 
@@ -208,6 +270,7 @@ const I18N = (() => {
     const nav = (navigator.language || '').toLowerCase();
     if (nav.startsWith('fr')) return 'fr';
     if (nav.startsWith('en')) return 'en';
+    if (nav.startsWith('de')) return 'de';
     return 'nl';
   }
 

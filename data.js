@@ -522,35 +522,35 @@ const HIST = {
 };
 
 // ==========================================================
-// Locale helpers — NL is de basis; FR/EN komen uit overlays
-// (data-fr.js / data-en.js, geladen vóór app.js)
+// Locale helpers — NL is de basis; FR/EN/DE komen uit overlays
+// (data-fr.js / data-en.js / data-de.js, geladen vóór app.js)
 // ==========================================================
 
 function getLocalizedDiary(lang) {
-  if (lang === 'fr' && typeof DIARY_FR !== 'undefined') {
-    return DIARY.map(d => {
-      const o = DIARY_FR[d.day];
-      return o ? Object.assign({}, d, o) : d;
-    });
-  }
-  if (lang === 'en' && typeof DIARY_EN !== 'undefined') {
-    return DIARY.map(d => {
-      const o = DIARY_EN[d.day];
-      return o ? Object.assign({}, d, o) : d;
-    });
-  }
-  return DIARY;
+  const overlays = {
+    fr: typeof DIARY_FR !== 'undefined' ? DIARY_FR : null,
+    en: typeof DIARY_EN !== 'undefined' ? DIARY_EN : null,
+    de: typeof DIARY_DE !== 'undefined' ? DIARY_DE : null
+  };
+  const overlay = overlays[lang];
+  if (!overlay) return DIARY;
+  return DIARY.map(d => {
+    const o = overlay[d.day];
+    return o ? Object.assign({}, d, o) : d;
+  });
 }
 
 function getLocalizedHist(lang) {
   if (lang === 'fr' && typeof HIST_FR !== 'undefined') return HIST_FR;
   if (lang === 'en' && typeof HIST_EN !== 'undefined') return HIST_EN;
+  if (lang === 'de' && typeof HIST_DE !== 'undefined') return HIST_DE;
   return HIST;
 }
 
 function localizeRoute(list, lang, which) {
   const pack = lang === 'fr' && typeof NOTES_FR !== 'undefined' ? NOTES_FR
     : lang === 'en' && typeof NOTES_EN !== 'undefined' ? NOTES_EN
+    : lang === 'de' && typeof NOTES_DE !== 'undefined' ? NOTES_DE
     : null;
   if (!pack) return list;
   const notes = pack[which] || {};
