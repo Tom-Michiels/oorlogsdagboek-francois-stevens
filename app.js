@@ -195,11 +195,11 @@ const ROUTE_RETURN_L = localizeRoute(ROUTE_RETURN, LANG, 'return');
     maxZoom: 17
   });
 
-  historic1939.addTo(map);
+  modernOsm.addTo(map);
   L.control.layers(
     {
-      [I18N.t('basemapHistoric')]: historic1939,
-      [I18N.t('basemapModern')]: modernOsm
+      [I18N.t('basemapModern')]: modernOsm,
+      [I18N.t('basemapHistoric')]: historic1939
     },
     null,
     { position: 'topright', collapsed: true }
