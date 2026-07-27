@@ -209,7 +209,7 @@ const I18N = (() => {
       portraitAlt: 'Porträt des Soldaten François Stevens im Mantel, mit seinem Adrian-Helm auf einem Sockel, 1940',
       portraitFig: 'François Stevens, Verfasser dieses Tagebuchs (Mai 1940)',
       introTitleHtml: 'Ein kleines Heft,<br>eine große Geschichte',
-      introP1Html: 'Nach einer Mobilmachung von <strong>259 Tagen</strong> wird die belgische Armee am 10. Mai 1940 in den Krieg gegen Deutschland verwickelt. François Stevens, Schneider und Magazinier seiner Batterie, dient am Geschütz T.R.A. 75 — <em>n° 211</em>.',
+      introP1Html: 'Nach einer Mobilmachung von <strong>259 Tagen</strong> wird die belgische Armee am 10. Mai 1940 in den Krieg gegen Deutschland verwickelt. François Stevens, Schneider und Quartiermeister seiner Batterie, dient am Geschütz T.R.A. 75 — <em>n° 211</em>.',
       introP2: 'In einem karierten Schulheft, verziert mit der belgischen Trikolore, hielt er Tag für Tag fest, was seiner Batterie widerfuhr: von den ersten deutschen Aufklärungsflugzeugen über Diepenbeek bis zur Kapitulation, der Kriegsgefangenschaft und seiner Flucht — in Zivilkleidung, mit einem geliehenen Kinderwagen, zurück nach Hause.',
       introQuote: '«Zusammen mit den alliierten Armeen werden wir den Feind bekämpfen.»',
       bookCoverAlt: 'Der Umschlag des Tagebuchs',

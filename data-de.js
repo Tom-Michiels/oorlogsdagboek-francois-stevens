@@ -200,7 +200,7 @@ Das kleine Dorf, das direkt vor uns liegt, wird unter Feuer genommen. Wir sehen 
 
 Um 13.40 Uhr beginnen die Deutschen, unsere Umgebung unter sehr schweres Feuer zu nehmen. Die Geschosse pfeifen über unsere Köpfe. In diesem Moment sind wir alle in eine Schutzgrube gekrochen. Wir haben Angst, aber sind sehr ruhig.
 
-Meiner Meinung nach werden dies unter unseren letzten Kriegstage sein. Uns zu verteidigen scheint mir praktisch unmöglich. Von den Franzosen und Briten im Stich gelassen, werden wir meiner Ansicht nach hier bis zum letzten Mann fallen müssen, wenn wir uns nicht ergeben. Um uns herum, im Umkreis von 2 Kilometern, sehen wir fast alles brennen, was eines der schrecklichsten Kriegsbilder sein muss.
+Meiner Meinung nach werden dies einige unserer letzten Kriegstage sein. Uns zu verteidigen scheint mir praktisch unmöglich. Von den Franzosen und Briten im Stich gelassen, werden wir meiner Ansicht nach hier bis zum letzten Mann fallen müssen, wenn wir uns nicht ergeben. Um uns herum, im Umkreis von 2 Kilometern, sehen wir fast alles brennen, was eines der schrecklichsten Kriegsbilder sein muss.
 
 Um 15.25 Uhr fliegen mehr als 100 deutsche Flugzeuge über uns. Der Feind hat uns in einem 3/4-Kreis eingeschlossen, d. h. in einem Hufeisen, während wir hinter uns am Meer landen werden, wenn wir weit zurückweichen müssen.
 
