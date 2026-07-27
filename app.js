@@ -175,12 +175,35 @@ const ROUTE_RETURN_L = localizeRoute(ROUTE_RETURN, LANG, 'return');
 (function buildMap() {
   const map = L.map('map', {
     scrollWheelZoom: false,
-    renderer: L.svg({ padding: 4 })
-  });
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap',
+    renderer: L.svg({ padding: 4 }),
+    minZoom: 7,
     maxZoom: 17
-  }).addTo(map);
+  });
+
+  // NGI topografische kaart 1939 — wegennet zoals net vóór mei 1940
+  // (ArcGIS-tegels: {z}/{y}/{x}; bron: historical.osm.be / NGI)
+  const historic1939 = L.tileLayer(
+    'https://wmts.ngi.be/arcgis/rest/services/seamless_carto__default__3857__800/MapServer/tile/{z}/{y}/{x}',
+    {
+      attribution: '<a href="https://www.ngi.be/" target="_blank" rel="noopener">NGI / IGN</a> — kaart 1939',
+      minZoom: 7,
+      maxZoom: 17
+    }
+  );
+  const modernOsm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>',
+    maxZoom: 17
+  });
+
+  modernOsm.addTo(map);
+  L.control.layers(
+    {
+      [I18N.t('basemapModern')]: modernOsm,
+      [I18N.t('basemapHistoric')]: historic1939
+    },
+    null,
+    { position: 'topright', collapsed: true }
+  ).addTo(map);
 
   const retreatLatLngs = ROUTE_RETREAT_L.map(p => [p.lat, p.lng]);
   const returnLatLngs  = ROUTE_RETURN_L.map(p => [p.lat, p.lng]);
