@@ -8,7 +8,7 @@ Interactieve website rond het handgeschreven oorlogsdagboek van soldaat Françoi
 (1e Regiment Artillerie, IIIe Groep, 7e Batterij), bijgehouden tijdens de Achttiendaagse
 Veldtocht van 10 tot 28 mei 1940.
 
-**Talen:** Nederlands · Français · English (taalwisselaar in de navigatie, of `?lang=nl|fr|en`)
+**Talen:** Nederlands · Français · English · Deutsch (taalwisselaar in de navigatie, of `?lang=nl|fr|en|de`)
 
 - Volledige transcriptie van alle 65 pagina's, dag per dag op een tijdlijn
 - Interactieve kaart met de route van de terugtocht en de terugkeer naar huis (moderne OSM standaard; NGI-topokaart 1939 als optie)
@@ -17,7 +17,7 @@ Veldtocht van 10 tot 28 mei 1940.
 De site is puur HTML/CSS/JavaScript, zonder build-stap. Open `index.html` lokaal of bezoek de
 [GitHub Pages-versie](https://tom-michiels.github.io/oorlogsdagboek-francois-stevens/).
 
-Bestanden voor meertaligheid: `i18n.js` (UI), `data.js` (NL), `data-fr.js`, `data-en.js`.
+Bestanden voor meertaligheid: `i18n.js` (UI), `data.js` (NL), `data-fr.js`, `data-en.js`, `data-de.js`.
 
 ## Bezoekersstatistieken (GoatCounter)
 
