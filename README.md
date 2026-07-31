@@ -29,3 +29,31 @@ De site telt pageviews via [GoatCounter](https://www.goatcounter.com/) (privacyv
 
 Daarna zie je de statistieken op:
 https://oorlogsdagboek-stevens.goatcounter.com
+
+## Vindbaar maken voor zoekmachines (SEO)
+
+De site bevat al:
+
+- `robots.txt` en `sitemap.xml`
+- titel, meta description, canonical URL
+- Open Graph / Twitter-kaarten (voor deelpreviews)
+- `hreflang` voor NL / FR / EN / DE
+- structured data (JSON-LD) over de website en het dagboek
+- statische H1-tekst in de HTML (ook zonder JavaScript leesbaar voor crawlers)
+
+### Stap 1 — Google Search Console
+
+1. Ga naar [Google Search Console](https://search.google.com/search-console)
+2. Voeg de property toe: `https://tom-michiels.github.io/oorlogsdagboek-francois-stevens/`
+3. Kies **HTML-tag** of een andere verificatiemethode
+4. Dien daarna de sitemap in:  
+   `https://tom-michiels.github.io/oorlogsdagboek-francois-stevens/sitemap.xml`
+5. Gebruik **URL-inspectie** → “Indexering aanvragen” voor de homepage
+
+### Stap 2 — Bing Webmaster Tools (optioneel)
+
+Zelfde sitemap indienen op [Bing Webmaster Tools](https://www.bing.com/webmasters).
+
+### Stap 3 — Links & inhoud
+
+Zoekmachines vinden de site sneller als andere sites ernaar linken (familie, lokale erfgoedverenigingen, schoolprojecten). De transcriptie op de tijdlijn is al rijke, unieke inhoud — dat helpt op termijn bij ranking.

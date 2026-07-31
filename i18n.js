@@ -278,6 +278,19 @@ const I18N = (() => {
     return (ui[current] && ui[current][key]) || ui.nl[key] || key;
   }
 
+  const SITE_ORIGIN = 'https://tom-michiels.github.io/oorlogsdagboek-francois-stevens';
+  const OG_LOCALES = { nl: 'nl_BE', fr: 'fr_BE', en: 'en_GB', de: 'de_DE' };
+
+  function setMetaByAttr(attr, key, content) {
+    let el = document.querySelector(`meta[${attr}="${key}"]`);
+    if (!el) {
+      el = document.createElement('meta');
+      el.setAttribute(attr, key);
+      document.head.appendChild(el);
+    }
+    el.setAttribute('content', content);
+  }
+
   function applyChrome() {
     document.documentElement.lang = current;
     document.title = t('metaTitle');
@@ -288,6 +301,21 @@ const I18N = (() => {
       document.head.appendChild(desc);
     }
     desc.setAttribute('content', t('metaDescription'));
+
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) {
+      canonical.setAttribute(
+        'href',
+        current === 'nl' ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}/?lang=${current}`
+      );
+    }
+
+    setMetaByAttr('property', 'og:title', t('metaTitle'));
+    setMetaByAttr('property', 'og:description', t('metaDescription'));
+    setMetaByAttr('property', 'og:locale', OG_LOCALES[current] || 'nl_BE');
+    setMetaByAttr('property', 'og:url', current === 'nl' ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}/?lang=${current}`);
+    setMetaByAttr('name', 'twitter:title', t('metaTitle'));
+    setMetaByAttr('name', 'twitter:description', t('metaDescription'));
 
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');

@@ -14,6 +14,14 @@ const ROUTE_RETURN_L = localizeRoute(ROUTE_RETURN, LANG, 'return');
 (function typewriter() {
   const el = document.getElementById('typewriter');
   const text = I18N.t('typewriter');
+  const html = text.replace(/\n/g, '<br>');
+  // Statische H1-tekst blijft in de HTML voor zoekmachines / no-JS;
+  // bij reduced motion geen animatie.
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    el.innerHTML = html;
+    return;
+  }
+  el.textContent = '';
   let i = 0;
   function tick() {
     if (i <= text.length) {
